@@ -46,5 +46,7 @@ After the last answer, write a short specification in the chat:
 - planned objects (function blocks, methods, types, I/Os, task)
 - planned tests
 
-Ask the user to confirm it (`tc_ask_user`: confirm / change something). Then implement – following the coding rules –
-and check with `tc_check`.
+Ask the user to confirm it: in a workflow with `tc_workflow action=step`, TcAgent asks them itself; otherwise with `tc_ask_user`
+(confirm / change something). Then implement – following the coding rules – and check with `tc_check`.
+
+If the user does not want the interview, respect that: note the assumptions you make and go on.

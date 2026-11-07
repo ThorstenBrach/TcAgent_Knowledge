@@ -2,14 +2,17 @@
 name: new-feature
 description: Add a new machine function or extend an existing one in the PLC project - from the clarified requirement over a change plan to code that passes tc_check and then builds with 0 errors, and is reviewed. Use it when the user asks for a new function, a new FB or a larger extension.
 metadata:
-  tcagent-gates: build-ok (after a clean tc_check) before review; tc_activate only after a build with 0 errors (always)
+  tcagent-gates: spec-ok before any code (the user confirms or skips); build-ok (after a clean tc_check) before review; tc_activate only after a build with 0 errors (always)
+  tcagent-requires-tcagent: ">=0.52.1"
 ---
 Follow the steps in order. Mark each one done with `tc_workflow action=step`; skip a step that does not apply with
 `skip=true` (checkpoints cannot be skipped).
 
-1. **requirements** – Clarify what the function must do before any code: load the skill `requirements-interview`
-   (`tc_skills action=show name=requirements-interview`) and follow it. Skip this step only if the user already gave a
-   complete specification (inputs, outputs, states, error handling, limits).
+1. **requirements** (requires: spec-ok) – Clarify what the function must do before any code: load the skill `requirements-interview`
+   (`tc_skills action=show name=requirements-interview`) and follow it. If the user already gave a complete specification
+   (inputs, outputs, states, error handling, limits), do not ask again. Then `tc_workflow action=step`, with the short specification
+   as `note`: TcAgent asks the user to confirm it. If the user does not want an interview, `skip=true`: TcAgent asks them too.
+   No PLC code can be written before that.
 2. **change-plan** – Read the coding rules (`tc_coding_rules`) and the affected code (`tc_plc_read`, `tc_plc_search`,
    `tc_find_references`). Show the user a short plan: which POUs, methods, DUTs and GVLs are new or changed, which
    interfaces change, which I/Os or tasks are touched. Wait for the user's agreement before writing code.
