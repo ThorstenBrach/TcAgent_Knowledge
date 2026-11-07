@@ -14,9 +14,10 @@ Follow the steps in order. Mark each one done with `tc_workflow action=step`; sk
    `tc_find_references`). Show the user a short plan: which POUs, methods, DUTs and GVLs are new or changed, which
    interfaces change, which I/Os or tasks are touched. Wait for the user's agreement before writing code.
 3. **code** – Write the code with `tc_plc_write` / `tc_plc_create`, following the coding rules (names, comments, structure).
+   For logic with several conditions, check it with the skill `plc-spec-review` before you go on; for recurring logic see `plc-st-patterns`.
    Keep the change as small as the plan; no unrelated reformatting.
 4. **check** – Pre-compile with `tc_check` first: it is fast and generates no code. Fix every compiler error it reports and
-   repeat until it is clean - fix the cause, not the symptom; if the same error comes back, look for a lesson (`tc_lessons`).
+   repeat until it is clean - fix the cause, not the symptom. Stop after 3 rounds without progress (skill `plc-fix-compile`).
 5. **build** (requires: build-ok) – `tc_build` once the check is clean; it must end with 0 errors. If it fails, go back to
    `tc_check` for the fixes instead of building again and again (a build generates the executable code and takes longer).
 6. **tests** – If the project has TcUnit tests for this area, add or extend a test and run it (`tc_test_run`). Recommended,
