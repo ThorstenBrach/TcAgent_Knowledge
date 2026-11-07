@@ -23,8 +23,9 @@ Follow the steps in order. Mark each one done with `tc_workflow action=step`; sk
    repeat until it is clean - fix the cause, not the symptom. Stop after 3 rounds without progress (skill `plc-fix-compile`).
 5. **build** (requires: build-ok) – `tc_build` once the check is clean; it must end with 0 errors. If it fails, go back to
    `tc_check` for the fixes instead of building again and again (a build generates the executable code and takes longer).
-6. **tests** – If the project has TcUnit tests for this area, add or extend a test and run it (`tc_test_run`). Recommended,
-   not a checkpoint - skip it when the project has no tests.
+6. **tests** – Propose tests, always: name the test cases from the specification and ask the user whether you shall write them
+   (`tc_ask_user`). If yes, add or extend them (`tc_test_skeleton` for a new suite) and run them (`tc_test_run`). Recommended, not a
+   checkpoint: the user decides, also when the project has no tests yet. Say at the end what stayed untested.
 7. **review** – Load the skill `plc-code-review` and review the change against it. Fix the findings that are clearly
    wrong; list the others for the user.
 8. **save** – `tc_save`. Summarize for the user what was changed, what was not tested, and what they should check on the
