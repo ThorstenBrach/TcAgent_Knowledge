@@ -3,7 +3,7 @@ name: plc-code-review
 description: Review PLC code or a change systematically - static risks, coding and risk rules, and a TwinCAT checklist (tasks and cycle time, access from several tasks, persistence, I/O links, online change, safety interfaces) - and report findings with their location. Use when the user asks for a review, before activating larger changes, or when a change touches shared data.
 metadata:
   tcagent-inspired-by: open-source code review methods (structured checklist, findings with location and severity)
-  tcagent-version: "1"
+  tcagent-version: "2"
 ---
 # PLC code review
 
@@ -11,6 +11,14 @@ metadata:
 
 Agree what is reviewed: a list of objects, a folder, or the changes since the last commit. Read every object
 completely (`tc_plc_read`) before judging it.
+
+Check two things separately, and report them separately:
+
+- **Standards**: does the code follow the rules of the project and the checklist below?
+- **Requirement**: does it do what was asked, no less and no more? Use the requirement, the ticket or the change plan; for
+  logic go through the skill `plc-spec-review`. If there is no requirement, say so and leave this part out.
+
+If you can, do the review with a fresh view: judge the code and the requirement, not what you remember from writing it.
 
 ## 2. Automatic checks
 

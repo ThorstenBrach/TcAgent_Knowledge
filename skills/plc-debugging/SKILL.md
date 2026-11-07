@@ -3,7 +3,7 @@ name: plc-debugging
 description: Find the cause of a PLC malfunction before changing code - pin down the symptom, reproduce and measure online, name the root cause, then fix and verify. Use when the user reports wrong behaviour, a fault, a hanging sequence, a wrong value or an exception at runtime.
 metadata:
   tcagent-inspired-by: the open-source "systematic debugging" method (no fix without a root cause)
-  tcagent-version: "1"
+  tcagent-version: "2"
 ---
 # PLC debugging
 
@@ -16,6 +16,11 @@ Rule: **no code change before the cause is named and backed by a measurement.**
 - Search known problems first: `tc_lessons action=search query=<symptom or error code>`.
 
 ## 2. Reproduce and measure
+
+First get a signal that shows exactly this fault: a failing TcUnit test, a value, or a scope recording. It must be able to
+show the fault and the correct behaviour, so "nothing crashed" does not count. This is the main work of the search: with a
+good signal the cause follows, and without one every theory is a guess. If you cannot get one, say so, list what you tried and
+ask the user for access or a recording. For a fault that comes rarely, aim at making it come more often.
 
 - Runtime state: `tc_plc_state`; messages of the runtime: `tc_errors kind=runtime`.
 - Current values: `ads_read` of the involved variables (state, step, inputs, outputs, timers).
