@@ -2,6 +2,7 @@
 name: online-change
 description: Load a PLC code change into a running PLC without stopping it - check whether that is safe, get the user's release, load, check that it really arrived. Use when a change should go onto a running machine by online change.
 metadata:
+  tcagent-requires-module: runtime
   tcagent-gates: build-ok before the load
 ---
 An online change takes effect in the next cycles of a running machine: instances keep running with new code. Every change on

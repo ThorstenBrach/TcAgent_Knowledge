@@ -2,6 +2,7 @@
 name: plc-traceability
 description: Connect requirements with code and tests - numbered requirements, a test per requirement, a coverage table as proof. Use when a function needs a documented proof of what was required and tested, or when the user asks which requirement is covered.
 metadata:
+  tcagent-requires-module: test
   tcagent-inspired-by: the open-source practice of spec-driven development (stable requirement ids, one test per requirement)
   tcagent-version: "1"
 ---

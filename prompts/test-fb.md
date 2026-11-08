@@ -1,6 +1,7 @@
 ---
 description: TcUnit tests for the open function block
 metadata:
+  tcagent-requires-module: test
   tcagent-category: Tests
   tcagent-tags: tcunit, test, skeleton
 ---

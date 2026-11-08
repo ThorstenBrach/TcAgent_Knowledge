@@ -2,6 +2,7 @@
 name: io-commissioning
 description: Check the I/Os of a machine signal by signal and keep a record - devices, links, inputs, outputs. Use when I/Os are commissioned, or checked after a hardware change.
 metadata:
+  tcagent-requires-module: io, runtime
   tcagent-gates: every output is switched by a person or after an explicit release per signal
 ---
 Switching an output can move a machine. The agent never sets an output on its own: a person does it, or the user releases that

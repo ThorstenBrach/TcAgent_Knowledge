@@ -2,6 +2,7 @@
 name: library-update
 description: Change the version of a PLC library in a project - compare the interfaces, check the usages, compile, test, lock the versions. Use when a library or placeholder should get another version.
 metadata:
+  tcagent-requires-module: packages
   tcagent-gates: build-ok after the change
 ---
 Follow the steps in order. Mark each one done with `tc_workflow action=step`; skip a step that does not apply with `skip=true`

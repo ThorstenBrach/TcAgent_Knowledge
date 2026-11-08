@@ -2,6 +2,7 @@
 name: safe-activation
 description: Bring a change onto a target system step by step - what changes, a backup, the user's release, loading and a check of the state afterwards. Use when a configuration is activated or a PLC program is loaded on a target.
 metadata:
+  tcagent-requires-module: runtime
   tcagent-gates: build-ok before the release; tc_activate only after a build with 0 errors (always)
 ---
 Activating and loading can move machines and can endanger people. The agent never decides this alone: every step that
