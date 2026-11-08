@@ -18,8 +18,9 @@ tools first and spend the deep reading on the few places that matter. Follow the
    hierarchy. Find data written from more than one task, `PERSISTENT` and `RETAIN` data, the I/O mapping (`tc_io_vars`), the
    interfaces to safety and HMI. Note what looks inconsistent: naming, structure, error handling done in different ways.
 4. **hotspots** – Choose at most 10 objects for a deep review: the most risks and findings, large or complex, written to from
-   several tasks, without tests (`tc_test_run action=list`), or central in the call graph. Show the list with the reason for
-   each and let the user change it.
+   several tasks, without tests (`tc_test_run action=list`), or central in the call graph. Ask with `tc_ask_user`: the list
+   with the reason for each, options "as proposed" and "change it" - wait for the answer before step 5. Without a person (a
+   run without a window) choose them yourself and name them in the report.
 5. **deep** – Review each hotspot with the skill `plc-code-review`, one object at a time, with what step 3 found about it.
    Prove each finding with code and place; stop after 3 rounds without new findings per object.
 6. **cross-cutting** – Check across the project: online change (`PERSISTENT`, pointers and references, instance data that
